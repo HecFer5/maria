@@ -1,16 +1,21 @@
 import { Router } from "express";
-const router = Router()
-import { 
-    getTarea,
-    getTareas,
-    crearTareas,
-    actualizaTarea,
-    eliminarTarea
+import {
+  getTarea,
+  getTareas,
+  crearTareas,
+  actualizarTarea,
+  eliminarTarea,
+  getTareasEliminadas
+} from "../controladores/tareasControladores.js";
 
- } from "../controladores/tareasControladores";
+const router = Router();
 
-router.get('tarea/')
-router.get('tarea/:id')
-router.post('tarea/')
-router.put('tarea/:id')
-router.delete('tarea/:id')
+router.get("/tarea", getTareas);
+router.get("/tareano", getTareasEliminadas);
+router.get("/tarea/:id", getTarea);
+router.post("/tarea", crearTareas);
+router.put("/tarea/:id", actualizarTarea);
+router.put("/tareaeliminada/:id", eliminarTarea);
+router.delete("/tarea/:id", eliminarTarea);
+
+export default router;
